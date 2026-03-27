@@ -4,10 +4,10 @@ import java.time.LocalDate;
 public class VehicleRentalApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        RentalSystem rentalSystem = new RentalSystem();
+        RentalSystem rentalSystem = RentalSystem.getInstance();
 
         while (true) {
-        	System.out.println("\n1: Add Vehicle\n" + 
+        	System.out.println("\n1: Add Vehicle to system\n" + 
                                   "2: Add Customer\n" + 
                                   "3: Rent Vehicle\n" + 
                                   "4: Return Vehicle\n" + 
@@ -73,9 +73,12 @@ public class VehicleRentalApp {
                     scanner.nextLine(); // Consume the leftover newline
                     System.out.print("Enter name: ");
                     String cname = scanner.nextLine();
-
-                    rentalSystem.addCustomer(new Customer(cid, cname));
-                    System.out.println("Customer added successfully.");
+                    if (rentalSystem.addCustomer(new Customer(cid, cname))) {
+                        System.out.println("Customer added successfully.");
+                    } else {
+                        System.out.println("Customer addition failed (Duplicate ID).");
+                    }
+                 
                     break;
                     
                 case 3:
@@ -101,8 +104,14 @@ public class VehicleRentalApp {
                         System.out.println("Vehicle or customer not found.");
                         break;
                     }
+                    if (rentalSystem.rentVehicle(vehicleToRent, customerToRent, LocalDate.now(), rentAmount)) {
+                    	System.out.println("Rental process completed successfully.");
+                    }
+                    	else {
+                    		System.out.println("Rental process failed.");
+                    }
 
-                    rentalSystem.rentVehicle(vehicleToRent, customerToRent, LocalDate.now(), rentAmount);
+                    
                     break;
 
                 case 4:
@@ -128,8 +137,12 @@ public class VehicleRentalApp {
                         System.out.println("Vehicle or customer not found.");
                         break;
                     }
-
-                    rentalSystem.returnVehicle(vehicleToReturn, customerToReturn, LocalDate.now(), returnFees);
+                    if (rentalSystem.returnVehicle(vehicleToReturn, customerToReturn, LocalDate.now(), returnFees)) {
+                        System.out.println("Return process completed successfully.");
+                    } else {
+                        System.out.println("Return process failed.");
+                    }
+             
                     break;
                     
                 case 5:
