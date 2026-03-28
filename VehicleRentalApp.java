@@ -59,10 +59,14 @@ public class VehicleRentalApp {
 		            }
                     
                     if (vehicle != null){
+                    	try {
 	                    vehicle.setLicensePlate(plate);
 	                    rentalSystem.addVehicle(vehicle);
+                    }catch (IllegalArgumentException e) {
+                    	System.out.println("Invalid License plate format!");
+                    	break;
                     }
-                    else {
+                    } else {
 	                    System.out.println("Vehicle not added successfully.");
                     }
                     break;

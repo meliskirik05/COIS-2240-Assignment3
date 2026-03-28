@@ -20,8 +20,22 @@ public abstract class Vehicle {
         this(null, null, 0);
     }
 
+    //Checking if the license plate is in valid format (by Yusuf)
     public void setLicensePlate(String plate) {
-        this.licensePlate = plate == null ? null : plate.toUpperCase();
+    	
+    if (!isValidPlate(plate)) {
+    		throw new IllegalArgumentException("Invalid license plate format");
+    	}
+        this.licensePlate =  plate.toUpperCase();
+    }
+    
+    
+    private boolean isValidPlate(String plate) {
+    	if (plate == null || plate.isEmpty()) {
+    		return false;
+    	}
+    	
+    	return plate.toUpperCase().matches("[A-Z]{3}[0-9]{3}");
     }
 
     public void setStatus(VehicleStatus status) {
