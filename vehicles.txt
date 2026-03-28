@@ -1,1 +1,4 @@
 Car,ABC123,Kia,Forte,2022
+Car,AAA111,Toyota,Corolla,2019
+Minibus,BBB222,Honda,Civic,2021
+PickupTruck,CCC333,Ford,Focus,2024

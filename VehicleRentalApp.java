@@ -58,6 +58,10 @@ public class VehicleRentalApp {
 		            	vehicle = null;
 		            }
                     
+                    
+                    //preventing program to crash with try-catch method.
+                    
+                    
                     if (vehicle != null){
                     	try {
 	                    vehicle.setLicensePlate(plate);

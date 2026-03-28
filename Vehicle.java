@@ -20,7 +20,7 @@ public abstract class Vehicle {
         this(null, null, 0);
     }
 
-    //Checking if the license plate is in valid format (by Yusuf)
+    //Checking if the license plate is in valid format.
     public void setLicensePlate(String plate) {
     	
     if (!isValidPlate(plate)) {
