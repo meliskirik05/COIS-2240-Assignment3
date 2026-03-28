@@ -58,16 +58,14 @@ public class VehicleRentalApp {
 		            	vehicle = null;
 		            }
                     
-                    
                     //preventing program to crash with try-catch method.
-                    
-                    
+               
                     if (vehicle != null){
                     	try {
 	                    vehicle.setLicensePlate(plate);
 	                    rentalSystem.addVehicle(vehicle);
                     }catch (IllegalArgumentException e) {
-                    	System.out.println("Invalid License plate format!");
+                    	System.out.println("Invalid license plate format!");
                     	break;
                     }
                     } else {
