@@ -24,7 +24,7 @@ public class VehicleRentalTest {
 
     // Task 2.1: Vehicle License Plate Validation
     @Test
-    void testLicensePlateValidation() {
+    void testLicensePlate() {
         Vehicle testCar = new Car("Honda", "Civic", 2023, 5);
         
         // Testing valid plates
